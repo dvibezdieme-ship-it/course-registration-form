@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Course Registration</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+    }
+
+    .form-container {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        padding: 30px;
+        border-radius: 15px;
+        width: 350px;
+        color: white;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .form-container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .input-group {
+        margin-bottom: 15px;
+        position: relative;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        outline: none;
+        border-radius: 8px;
+        background: rgba(255,255,255,0.1);
+        color: white;
+        transition: 0.3s;
+    }
+
+    input::placeholder {
+        color: #ccc;
+    }
+
+    input:focus, select:focus {
+        background: rgba(255,255,255,0.2);
+        transform: scale(1.03);
+    }
+
+    select option {
+        color: black;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 8px;
+        background: #38bdf8;
+        color: black;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: #0ea5e9;
+        transform: scale(1.05);
+    }
+
+    .success {
+        margin-top: 10px;
+        text-align: center;
+        color: #4ade80;
+        display: none;
+    }
+</style>
+
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Course Registration</h2>
+
+    <form id="form">
+        <div class="input-group">
+            <input type="text" id="name" placeholder="Full Name" required>
+        </div>
+
+        <div class="input-group">
+            <input type="email" id="email" placeholder="Email Address" required>
+        </div>
+
+        <div class="input-group">
+            <input type="text" id="studentId" placeholder="Student ID" required>
+        </div>
+
+        <div class="input-group">
+            <select id="course" required>
+                <option value="">Select Course</option>
+                <option>Software Development</option>
+                <option>Networking</option>
+                <option>Cyber Security</option>
+                <option>Data Science</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <select id="year" required>
+                <option value="">Select Year</option>
+                <option>level 3</option>
+                <option>level 4</option>
+                <option>level 5</option>
+            </select>
+        </div>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <div class="success" id="successMsg">
+        ✅ Registration Successful!
+    </div>
+</div>
+
+<script>
+    const form = document.getElementById("form");
+    const successMsg = document.getElementById("successMsg");
+
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const studentId = document.getElementById("studentId").value.trim();
+        const course = document.getElementById("course").value;
+        const year = document.getElementById("year").value;
+
+        if (!name || !email || !studentId || !course || !year) {
+            alert("Please fill all fields");
+            return;
+        }
+
+        successMsg.style.display = "block";
+        form.reset();
+    });
+</script>
+
+</body>
+</html>
